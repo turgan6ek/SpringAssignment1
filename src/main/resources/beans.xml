@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="client1" class="kz.iitu.bank.test.Client">
+        <constructor-arg index="0" value="Madiyar Seisembaev"/>
+        <constructor-arg index="1" value="8-700-546-55-55"/>
+        <constructor-arg index="2" value="7710-0515-4494-2261"/>
+        <constructor-arg index="3" value="6713"/>
+        <constructor-arg index="4" value="24000"/>
+    </bean>
+
+    <bean id="client2" class="kz.iitu.bank.test.Client">
+        <constructor-arg index="0" value="Turganbek Yerulan"/>
+        <constructor-arg index="1" value="8-771-564-04-58"/>
+        <constructor-arg index="2" value="8722-4494-0515-1111"/>
+        <constructor-arg index="3" value="4899"/>
+        <constructor-arg index="4" value="26000"/>
+    </bean>
+
+    <bean id="client3" class="kz.iitu.bank.test.Client">
+        <constructor-arg index="0" value="Peter Parker"/>
+        <constructor-arg index="1" value="8-777-777-45-00"/>
+        <constructor-arg index="2" value="4400-0000-4567-9754"/>
+        <constructor-arg index="3" value="6713"/>
+        <constructor-arg index="4" value="24000"/>
+    </bean>
+
+    <bean id="client4" class="kz.iitu.bank.test.Client">
+        <constructor-arg index="0" value="Elon Musk"/>
+        <constructor-arg index="1" value="8-777-777-77-77"/>
+        <constructor-arg index="2" value="7777-7777-7777-7777"/>
+        <constructor-arg index="3" value="6713"/>
+        <constructor-arg index="4" value="165165065100"/>
+    </bean>
+
+    <bean id="client5" class="kz.iitu.bank.test.Client">
+        <constructor-arg index="0" value="Jeff Bezos"/>
+        <constructor-arg index="1" value="8-777-666-66-66"/>
+        <constructor-arg index="2" value="5555-5555-5555-5555"/>
+        <constructor-arg index="3" value="6713"/>
+        <constructor-arg index="4" value="240654065400"/>
+    </bean>
+
+    <bean id="bankService" class="kz.iitu.bank.test.ATM">
+        <constructor-arg index="0" value="0.01"/>
+    </bean>
+    <bean id="bank" class="kz.iitu.bank.test.Bank">
+        <property name="accounts">
+            <list>
+                <ref bean = "client1"/>
+                <ref bean = "client2"/>
+                <ref bean = "client3"/>
+                <ref bean = "client4"/>
+                <ref bean = "client5"/>
+            </list>
+        </property>
+        <property name="bankService" ref="bankService"/>
+    </bean>
+</beans>
