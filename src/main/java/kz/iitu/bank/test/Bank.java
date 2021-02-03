@@ -6,8 +6,9 @@ import java.util.List;
 public class Bank {
     private List<Client> accounts;
     private BankService bankService;
-    public Bank(BankService bankService){
-        this.accounts = new ArrayList<Client>();
+
+    public Bank(List<Client> accounts,BankService bankService){
+        this.accounts = accounts;
         this.bankService = bankService;
     }
 
@@ -26,4 +27,5 @@ public class Bank {
     public void setBankService(BankService bankService) {
         this.bankService = bankService;
     }
+
 }

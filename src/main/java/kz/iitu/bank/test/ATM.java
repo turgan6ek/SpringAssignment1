@@ -18,8 +18,8 @@ public class ATM implements BankService{
         System.out.println("1.Check Balance \n"
                 + "2.Withdraw \n"
                 + "3.Top up \n"
-                + "4.Check Pin \n"
-                + "5.Exit"
+                + "4.Change Pin \n"
+                + "5.Exit \n"
         );
         int choice = scan.nextInt();
         int errors = 0;
@@ -40,22 +40,55 @@ public class ATM implements BankService{
                 }
                 break;
                 case 2: {
-
+                    System.out.println("Enter the pin please:");
+                    in_pin = scan.next();
+                    if (in_pin.substring(0,4).equals(this.client.getPin())){
+                        System.out.println("How much do you want to withdraw?");
+                        int money = scan.nextInt();
+                        withdraw(money);
+                    }
+                    else {
+                        errors++;
+                        System.out.println("Incorrect Pin code!!!");
+                    }
                 }
                 break;
                 case 3: {
-
+                    System.out.println("Enter the pin please:");
+                    in_pin = scan.next();
+                    if (in_pin.substring(0,4).equals(this.client.getPin())){
+                        System.out.println("How much do you want to top up?");
+                        int money = scan.nextInt();
+                        topUp(money);
+                        System.out.println("Top up successfull. Current amount un your account: " + balance());
+                    }
+                    else {
+                        errors++;
+                        System.out.println("Incorrect Pin code!!!");
+                    }
                 }
                 break;
                 case 4: {
-
+                    System.out.println("Enter the pin please:");
+                    in_pin = scan.next();
+                    if (in_pin.substring(0,4).equals(this.client.getPin())){
+                        System.out.println("Enter new pin please: ");
+                        String pin = scan.next();
+                        changePin(pin);
+                    }
+                    else {
+                        errors++;
+                        System.out.println("Incorrect Pin code!!!");
+                    }
                 }
                 break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + choice);
             }
             if (errors >= 3){
-                System.out.println("You entered pin incorrectly 3 times");
+                System.out.println("You entered pin incorrectly 3 times. Your card will be held by ATM. " +
+                        "Please contact local customer support.");
+                break;
             }
             System.out.println("1.Check Balance \n"
                                 + "2.Withdraw \n"
