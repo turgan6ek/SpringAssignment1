@@ -60,7 +60,6 @@ public class ATM implements BankService{
                         System.out.println("How much do you want to top up?");
                         int money = scan.nextInt();
                         topUp(money);
-                        System.out.println("Top up successfull. Current amount un your account: " + balance());
                     }
                     else {
                         errors++;
