@@ -82,6 +82,11 @@ public class ATM implements BankService{
                     }
                 }
                 break;
+                case 5: {
+                    System.out.println("Good bye " + client.getName()+ "!");
+                    System.out.println("Please don't forget your card!");
+                }
+                break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + choice);
             }
@@ -93,7 +98,7 @@ public class ATM implements BankService{
             System.out.println("1.Check Balance \n"
                                 + "2.Withdraw \n"
                                 + "3.Top up \n"
-                                + "4.Check Pin \n"
+                                + "4.Change Pin \n"
                                 + "5.Exit"
             );
             choice = scan.nextInt();

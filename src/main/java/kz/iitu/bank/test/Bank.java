@@ -1,13 +1,15 @@
 package kz.iitu.bank.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
     private List<Client> accounts;
     private BankService bankService;
-
-    public Bank(List<Client> accounts,BankService bankService){
+    public Bank() { }
+     public Bank(List<Client> accounts, BankService bankService) {
         this.accounts = accounts;
         this.bankService = bankService;
     }

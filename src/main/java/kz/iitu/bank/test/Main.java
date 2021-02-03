@@ -13,9 +13,9 @@ public class Main {
         //There are 5 clients in the bank.
         //And I just chose the random client when starting the application.
         //The pin codes are in 'beans.xml' file.
+
         Random rand = new Random();
         Client randomClient = bank.getAccounts().get(rand.nextInt(bank.getAccounts().size()));
         bank.getBankService().showMenu(randomClient);
-
     }
 }

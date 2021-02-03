@@ -43,9 +43,10 @@
         <constructor-arg index="4" value="240654065400"/>
     </bean>
 
-    <bean id="bankService" class="kz.iitu.bank.test.ATM">
+    <bean id="bankService1" class="kz.iitu.bank.test.ATM">
         <constructor-arg index="0" value="0.01"/>
     </bean>
+
     <bean id="bank" class="kz.iitu.bank.test.Bank">
         <property name="accounts">
             <list>
@@ -56,6 +57,6 @@
                 <ref bean = "client5"/>
             </list>
         </property>
-        <property name="bankService" ref="bankService"/>
+        <property name="bankService" ref="bankService1"/>
     </bean>
 </beans>
