@@ -8,14 +8,18 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-
+        ClientService employeeService = context.getBean(ClientService.class);
         Bank bank = context.getBean("bank",Bank.class);
-        //There are 5 clients in the bank.
-        //And I just chose the random client when starting the application.
-        //The pin codes are in 'beans.xml' file.
 
-        Random rand = new Random();
-        Client randomClient = bank.getAccounts().get(rand.nextInt(bank.getAccounts().size()));
-        bank.getBankService().showMenu(randomClient);
+        Client emp= new Client();
+        employeeService.insertClient(emp);
+
+
+        employeeService.getAllClients();
+
+//
+//        Random rand = new Random();
+//        Client randomClient = bank.getAccounts().get(rand.nextInt(bank.getAccounts().size()));
+//        bank.getBankService().showMenu(randomClient);
     }
 }

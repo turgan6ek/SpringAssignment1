@@ -1,18 +1,35 @@
 package kz.iitu.bank.test;
 
 public class Client {
+    private int client_id;
+
+    public int getClient_id() {
+        return client_id;
+    }
+    public Client(){
+
+    }
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
+    }
+
     private String name;
     private String phone_num;
     private String card_num;
     private String pin;
     private Double cash;
+    private String cvv, Exp_date;
 
-    public Client(String name, String phone_num, String card_num, String pin, Double cash){
-        this.name = name;
-        this.phone_num = phone_num;
-        this.card_num = card_num;
-        this.pin = pin;
-        this.cash = cash;
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
+    public String getExp_date() {
+        return Exp_date;
     }
 
     @Override
@@ -23,7 +40,23 @@ public class Client {
                 ", card_num='" + card_num + '\'' +
                 ", pin='" + pin + '\'' +
                 ", cash=" + cash +
+                ", cvv='" + cvv + '\'' +
+                ", Exp_date='" + Exp_date + '\'' +
                 '}';
+    }
+
+    public void setExp_date(String exp_date) {
+        Exp_date = exp_date;
+    }
+
+    public Client(String name, String phone_num, String card_num, String pin, Double cash, String cvv, String exp_date) {
+        this.name = name;
+        this.phone_num = phone_num;
+        this.card_num = card_num;
+        this.pin = pin;
+        this.cash = cash;
+        this.cvv = cvv;
+        Exp_date = exp_date;
     }
 
     public String getPhone_num() {
