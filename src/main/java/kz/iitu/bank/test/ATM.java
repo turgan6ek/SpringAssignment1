@@ -14,6 +14,7 @@ public class ATM implements BankService{
     public ATM(Bank bank) {
         this.bank = bank;
     }
+    Statement statement = null;
 
     @Override
     public void showMenu(Client client) {
@@ -146,20 +147,27 @@ public class ATM implements BankService{
 
     @Override
     public void changePin(String pin) {
-        this.client.setPin(pin.substring(0,4));
+        try {
+            String query = "update accounts set pin = '" + pin + "' where client_id = " + client.getClient_id();
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+            this.client.setPin(pin);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         System.out.println("Your new pin is : " + this.client.getPin());
     }
 
     @Override
     public void init_method() throws SQLException {
         Connection connection = this.create_DBCon();
-        Statement statement = null;
         ResultSet set = null;
         String query = "SELECT * FROM accounts";
         statement = connection.createStatement();
         set = statement.executeQuery(query);
         while (set.next()){
-            Client client = new Client(set.getString(2), set.getString(3), set.getString(4),
+            Client client = new Client(set.getInt(1), set.getString(2), set.getString(3), set.getString(4),
                     set.getString(5),set.getString(6), set.getString(7), set.getDouble(8));
             bank.getAccounts().add(client);
         }

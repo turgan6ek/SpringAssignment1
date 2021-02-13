@@ -49,7 +49,8 @@ public class Client {
         Exp_date = exp_date;
     }
 
-    public Client(String name, String phone_num, String card_num, String exp_date,String cvv, String pin, Double cash) {
+    public Client(int client_id, String name, String phone_num, String card_num, String exp_date,String cvv, String pin, Double cash) {
+        this.client_id = client_id;
         this.name = name;
         this.phone_num = phone_num;
         this.card_num = card_num;
