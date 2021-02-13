@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Bank {
     private List<Client> accounts;
-    private BankService bankService;
+    private Double fee;
     public Bank() { }
-     public Bank(List<Client> accounts, BankService bankService) {
+     public Bank(List<Client> accounts, Double fee) {
         this.accounts = accounts;
-        this.bankService = bankService;
+        this.fee = fee;
     }
 
     public List<Client> getAccounts() {
@@ -22,12 +22,15 @@ public class Bank {
         this.accounts = accounts;
     }
 
-    public BankService getBankService() {
-        return bankService;
+    public void addAccount(Client client){
+        this.accounts.add(client);
     }
 
-    public void setBankService(BankService bankService) {
-        this.bankService = bankService;
+    public Double getFee() {
+        return fee;
     }
 
+    public void setFee(Double fee) {
+        this.fee = fee;
+    }
 }
