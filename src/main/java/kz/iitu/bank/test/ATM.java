@@ -133,6 +133,15 @@ public class ATM implements BankService{
         }
         else {
             this.client.setCash(this.client.getCash() - cash - cash * this.bank.getFee());//Комиссия
+            try {
+                Double total = client.getCash() - cash - cash * this.bank.getFee();
+                String query = "update accounts set cash = '" + total + "' where client_id = " + client.getClient_id();
+                statement = connection.createStatement();
+                statement.executeUpdate(query);
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
             System.out.println("Operation succeed.\n"+
                                     "Available funds in your account: "+ balance());
         }
@@ -140,6 +149,15 @@ public class ATM implements BankService{
 
     @Override
     public void topUp(Integer cash) {
+        try {
+            Double total = client.getCash() + cash - cash * this.bank.getFee();
+            String query = "update accounts set cash = '" + total + "' where client_id = " + client.getClient_id();
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         this.client.setCash(this.client.getCash() + cash - cash * this.bank.getFee());
         System.out.println("Operation succeed.\n"+
                 "Available funds in your account: "+ balance());
