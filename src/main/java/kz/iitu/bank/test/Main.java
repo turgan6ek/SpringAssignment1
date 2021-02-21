@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Connection;
@@ -13,12 +14,17 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+        //ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.scan("kz.iitu.bank.test");
+        context.refresh();
         BankService bankService = context.getBean("bankService1", ATM.class);
         Random rand = new Random();
 
         Client randomClient = bankService.getBank().getAccounts().get(rand.nextInt(bankService.getBank().getAccounts().size()));
         bankService.showMenu(randomClient);
-        ((ClassPathXmlApplicationContext) context).close();
+        ((AnnotationConfigApplicationContext) context).close();
+
     }
 }

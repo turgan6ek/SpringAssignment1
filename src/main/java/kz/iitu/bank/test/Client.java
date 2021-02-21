@@ -1,5 +1,11 @@
 package kz.iitu.bank.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Client {
     private int client_id;
 
@@ -48,7 +54,6 @@ public class Client {
     public void setExp_date(String exp_date) {
         Exp_date = exp_date;
     }
-
     public Client(int client_id, String name, String phone_num, String card_num, String exp_date,String cvv, String pin, Double cash) {
         this.client_id = client_id;
         this.name = name;

@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
 
-    <bean id="bank" class="kz.iitu.bank.test.Bank">
-        <property name="accounts">
-            <list>
+<!--    <bean id="bank" class="kz.iitu.bank.test.Bank">-->
+<!--        <property name="accounts">-->
+<!--            <list>-->
 
-            </list>
-        </property>
-        <property name="fee" value="0.01"/>
-    </bean>
-    <bean id="bankService1" class="kz.iitu.bank.test.ATM" init-method="init_method" destroy-method="destroy">
-        <constructor-arg index="0" ref="bank"/>
-    </bean>
-</beans>
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="fee" value="0.01"/>-->
+<!--    </bean>-->
+<!--    <bean id="bankService1" class="kz.iitu.bank.test.ATM" init-method="init_method" destroy-method="destroy">-->
+<!--        <constructor-arg index="0" ref="bank"/>-->
+<!--    </bean>-->
+<!--</beans>-->

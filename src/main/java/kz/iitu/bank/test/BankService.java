@@ -7,8 +7,8 @@ public interface BankService {
     void showMenu(Client client);
     Double balance();
     boolean checkPin(String pin);
-    void withdraw(Integer cash);
-    void topUp(Integer cash);
+    void withdraw(int cash);
+    void topUp(int cash);
     void changePin(String pin);
     void init_method() throws SQLException;
     Connection create_DBCon();

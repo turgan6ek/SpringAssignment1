@@ -1,16 +1,23 @@
 package kz.iitu.bank.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.sql.*;
 import java.util.Scanner;
-
+@Component("bankService1")
 public class ATM implements BankService{
     private Client client;
+
     private Bank bank;
     Connection connection = null;
     Scanner scan = new Scanner(System.in);
+    @Autowired
     public ATM(Bank bank) {
         this.bank = bank;
     }
@@ -126,7 +133,7 @@ public class ATM implements BankService{
     }
 
     @Override
-    public void withdraw(Integer cash) {
+    public void withdraw(int cash) {
         if (cash > client.getCash()) {
             System.out.println("Sorry, You don't have enough money.");
             System.out.println("Available funds in your account: " + this.client.getCash());
@@ -148,7 +155,7 @@ public class ATM implements BankService{
     }
 
     @Override
-    public void topUp(Integer cash) {
+    public void topUp(int cash) {
         try {
             Double total = client.getCash() + cash - cash * this.bank.getFee();
             String query = "update accounts set cash = '" + total + "' where client_id = " + client.getClient_id();
@@ -176,7 +183,7 @@ public class ATM implements BankService{
         }
         System.out.println("Your new pin is : " + this.client.getPin());
     }
-
+    @PostConstruct
     @Override
     public void init_method() throws SQLException {
         Connection connection = this.create_DBCon();
@@ -219,7 +226,7 @@ public class ATM implements BankService{
     public void setBank(Bank bank) {
         this.bank = bank;
     }
-
+    @PreDestroy
     @Override
     public void destroy() {
         try {
